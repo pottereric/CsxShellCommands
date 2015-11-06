@@ -16,6 +16,16 @@ public void rmdir(string directoryName)
 	System.IO.Directory.Delete(directoryName);
 }
 
+public void del(string fileName)
+{
+	System.IO.File.Delete(fileName);
+}
+
+public void copy(string fileName, string newFileName)
+{
+	System.IO.File.Copy(fileName, newFileName);
+}
+
 public void dir()
 {
     var displayList = new List<Tuple<string, string>>();
@@ -50,6 +60,31 @@ public void dir()
 		Console.WriteLine(item.Item2);
 	}
 
+}
+
+public void type(string fileName)
+{
+	var lines = System.IO.File.ReadAllLines(fileName);
+	foreach(var line in lines)
+	{
+		Console.WriteLine(line);
+	}
+}
+
+public void more(string fileName)
+{
+	var lines = System.IO.File.ReadAllLines(fileName);
+	for(int i = 0; i < lines.Count(); i++)
+	{
+		var line = lines[i];
+		Console.WriteLine(line);
+		
+		if(i > 1 && i %30 == 0)
+		{
+			Console.WriteLine("-- More --");
+			Console.ReadKey();
+		}
+	}
 }
 
 Console.WriteLine("Compiled ShellCommands.csx");
