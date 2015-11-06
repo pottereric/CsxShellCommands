@@ -39,7 +39,6 @@ public void dir()
 	    	fileData.LastWriteTime.ToString(),
 	    	String.Empty,
 	    	fileData.Name);
-		//Console.WriteLine(display); 
 		displayList.Add(new Tuple<string, string>(fileData.Name, display));
     }
     var directories = System.IO.Directory.GetDirectories(".");
@@ -86,5 +85,11 @@ public void more(string fileName)
 		}
 	}
 }
+
+public void cd(string newDirName)
+{
+	System.IO.Directory.SetCurrentDirectory(newDirName);
+}
+
 
 Console.WriteLine("Compiled ShellCommands.csx");
